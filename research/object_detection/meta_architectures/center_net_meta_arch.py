@@ -2049,7 +2049,7 @@ def crop_and_threshold_masks(elems, input_height, input_width, mask_height=256,
   surface_coords = (
       surface_coords * tf.cast(instance_masks_with_parts, tf.float32))
 
-  return [tf.squeeze(all_instances, axis=3), surface_coords]
+  return [tf.cast(tf.squeeze(all_instances, axis=3), tf.uint8), surface_coords]
 
 
 def gather_surface_coords_for_parts(surface_coords_cropped,
